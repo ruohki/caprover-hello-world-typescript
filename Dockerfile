@@ -10,4 +10,6 @@ COPY package.json .
 COPY package-lock.json .
 RUN npm install --production
 
+
+HEALTHCHECK --interval=1s --timeout=5s --start-period=5s --retries=3 CMD curl -f http://localhost:3000/status || exit 1
 CMD ["node", "dist/main.js"]
