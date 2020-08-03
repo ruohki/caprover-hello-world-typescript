@@ -6,7 +6,8 @@ RUN npm run build:app
 FROM node:alpine
 
 COPY --from=builder dist/ .
-COPY . .
+COPY package.json .
+COPY package-lock.json .
 
 RUN npm install --production
 
